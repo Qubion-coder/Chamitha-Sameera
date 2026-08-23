@@ -51,10 +51,10 @@ export const IntroVideo: React.FC<IntroVideoProps> = ({ onComplete }) => {
               <div className="absolute top-0 right-0 w-[200%] h-[200%] bg-brand-primary-light/5 blur-[100px] rounded-full pointer-events-none" />
               
               <h2 className="relative text-brand-primary-muted uppercase tracking-[0.7em] text-[10px] sm:text-xs font-bold mb-4 sm:mb-8 drop-shadow-md">
-                Royal Invitation
+                Wedding Invitation
               </h2>
               <h1 className="relative text-6xl sm:text-[9rem] font-display text-white tracking-widest mb-4 drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
-                THILINI <span className="text-brand-primary-light italic font-light">&</span> NADUN
+                CHAMITHA <span className="text-brand-primary-light italic font-light">&</span> SAMEERA
               </h1>
               <div className="w-32 h-[1.5px] bg-gradient-to-r from-transparent via-brand-primary to-transparent mx-auto mt-10 shadow-[0_0_15px_rgba(70,130,180,0.5)]" />
             </motion.div>
