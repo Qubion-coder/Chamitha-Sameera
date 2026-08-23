@@ -12,7 +12,6 @@ import { Location } from './components/Location';
 import { RSVPForm } from './components/RSVPForm';
 import { Footer } from './components/Footer';
 import { IntroVideo } from './components/IntroVideo';
-import { Gallery } from './components/Gallery';
 import { HeroContent } from './components/HeroContent';
 import { CornerFlowers } from './components/CornerFlowers';
 
@@ -22,7 +21,7 @@ export default function App() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const weddingDate = new Date('2026-08-20T09:51:00');
+  const weddingDate = new Date('2026-12-16T09:30:00');
 
   const startMusic = () => {
     if (audioRef.current && !isMusicPlaying) {
@@ -121,10 +120,6 @@ export default function App() {
             </section>
 
             {/* Timeline section removed entirely as requested */}
-
-            <section id="gallery" className="bg-brand-ivory">
-              <Gallery />
-            </section>
 
             <section id="location" className="py-16 sm:py-32 bg-gradient-to-br from-[#1D3557] to-[#2C3E50] relative overflow-hidden">
               <CornerFlowers position="bottom-left" opacity={0.4} scale={1.2} />

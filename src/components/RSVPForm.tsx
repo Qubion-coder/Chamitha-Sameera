@@ -8,8 +8,9 @@ import { CheckCircle, Loader2, Heart, Sparkles } from 'lucide-react';
 export const RSVPForm: React.FC = () => {
   const [formData, setFormData] = useState({
     fullName: '',
+    attending: 'yes',
     guests: '1',
-    dietaryNotes: '',
+    wish: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
@@ -17,13 +18,14 @@ export const RSVPForm: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
 
-    const normalizedGuests = parseInt(formData.guests, 10);
+    const normalizedGuests = formData.attending === 'yes' ? parseInt(formData.guests, 10) : 0;
 
     try {
       await submitToGoogleSheet('rsvp', {
         fullName: formData.fullName,
+        attending: formData.attending,
         guests: normalizedGuests,
-        dietaryNotes: formData.dietaryNotes,
+        wish: formData.wish,
         submittedAt: new Date().toISOString(),
       });
 
@@ -39,7 +41,7 @@ export const RSVPForm: React.FC = () => {
       }
 
       setStatus('success');
-      setFormData({ fullName: '', guests: '1', dietaryNotes: '' });
+      setFormData({ fullName: '', attending: 'yes', guests: '1', wish: '' });
     } catch (error) {
       console.error('Error sending RSVP to Google Sheets: ', error);
       setStatus('error');
@@ -129,31 +131,61 @@ export const RSVPForm: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Number of Guests</label>
-                  <div className="relative group">
-                    <select
-                      className="w-full bg-white/80 px-6 py-4 rounded-full border border-stone-200/60 focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary-light/40 outline-none transition-all duration-300 appearance-none font-serif italic text-lg shadow-inner text-stone-700 cursor-pointer"
-                      value={formData.guests}
-                      onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Will you be attending?</label>
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, attending: 'yes' })}
+                      className={`flex-1 py-3 rounded-full font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] transition-all duration-300 border ${
+                        formData.attending === 'yes'
+                          ? 'bg-brand-primary text-white border-brand-primary shadow-md'
+                          : 'bg-white/80 text-stone-500 border-stone-200/60 hover:bg-stone-50 hover:border-brand-primary/30'
+                      }`}
                     >
-                      <option value="1">Just Me (1 Guest)</option>
-                      <option value="2">We are coming! (2 Guests)</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                    </select>
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-primary-light transition-transform duration-300 group-hover:scale-110">
-                      <Heart className="w-5 h-5 fill-brand-primary/30 text-brand-primary drop-shadow-sm" />
-                    </div>
+                      Joyfully Accept
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, attending: 'no' })}
+                      className={`flex-1 py-3 rounded-full font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] transition-all duration-300 border ${
+                        formData.attending === 'no'
+                          ? 'bg-stone-500 text-white border-stone-500 shadow-md'
+                          : 'bg-white/80 text-stone-500 border-stone-200/60 hover:bg-stone-50 hover:border-stone-400'
+                      }`}
+                    >
+                      Regretfully Decline
+                    </button>
                   </div>
                 </div>
 
+                {formData.attending === 'yes' && (
+                  <div>
+                    <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Number of Guests</label>
+                    <div className="relative group">
+                      <select
+                        className="w-full bg-white/80 px-6 py-4 rounded-full border border-stone-200/60 focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary-light/40 outline-none transition-all duration-300 appearance-none font-serif italic text-lg shadow-inner text-stone-700 cursor-pointer"
+                        value={formData.guests}
+                        onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                      >
+                        <option value="1">Just Me (1 Guest)</option>
+                        <option value="2">We are coming! (2 Guests)</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                      </select>
+                      <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-primary-light transition-transform duration-300 group-hover:scale-110">
+                        <Heart className="w-5 h-5 fill-brand-primary/30 text-brand-primary drop-shadow-sm" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Dietary Notes (Optional)</label>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Your Wishes for the Couple</label>
                   <textarea
-                    placeholder="We'd love to know if you have any allergies..."
+                    placeholder="Leave a message or wish for the couple..."
                     className="w-full bg-white/80 px-6 py-4 rounded-[2rem] border border-stone-200/60 focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary-light/40 outline-none transition-all duration-300 h-28 resize-none font-serif italic text-lg shadow-inner placeholder:text-stone-300"
-                    value={formData.dietaryNotes}
-                    onChange={(e) => setFormData({ ...formData, dietaryNotes: e.target.value })}
+                    value={formData.wish}
+                    onChange={(e) => setFormData({ ...formData, wish: e.target.value })}
                   />
                 </div>
 

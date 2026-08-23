@@ -42,7 +42,7 @@ export const CeremonyDetails: React.FC = () => {
                   <Calendar className="w-5 h-5 text-brand-primary group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">Thursday, August 20</h4>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">Wednesday, December 16</h4>
                   <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">The Year Two Thousand Twenty Six</p>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export const CeremonyDetails: React.FC = () => {
                   <Clock className="w-5 h-5 text-brand-gold-deep group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">09:51 AM - 10:30 AM</h4>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">09:30 AM</h4>
                   <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Poruwa Ceremony</p>
                 </div>
               </div>
@@ -64,8 +64,8 @@ export const CeremonyDetails: React.FC = () => {
                   <MapPin className="w-5 h-5 text-brand-gold-deep group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">Waters Edge</h4>
-                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Battaramulla, Sri Lanka</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-gold-deep transition-colors duration-500">Hotel Kashyapa</h4>
+                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Awissawella</p>
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@ export const CeremonyDetails: React.FC = () => {
             {/* Main Creative Image Frame */}
             <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] overflow-hidden border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(70,130,180,0.2)] bg-brand-champagne group flex items-center justify-center">
               <img 
-                src="/pre/gallery-2.jpg" 
+                src="/pre/couple-2.jpeg" 
                 alt="Ceremony" 
                 className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
               />
@@ -108,12 +108,12 @@ export const CeremonyDetails: React.FC = () => {
                 <Heart className="text-brand-pink w-6 h-6 sm:w-10 sm:h-10 mb-2 sm:mb-5 fill-brand-pink/20 drop-shadow-sm" />
                 <Sparkles className="absolute top-0 right-10 w-3 h-3 sm:w-4 sm:h-4 text-brand-gold-deep animate-pulse" />
               </div>
-              <h4 className="font-display text-xl sm:text-4xl text-stone-800 mb-1 sm:mb-3 tracking-tight">The Reception</h4>
+              <h4 className="font-display text-xl sm:text-4xl text-stone-800 mb-1 sm:mb-3 tracking-tight">Going Away</h4>
               <p className="text-stone-500/90 font-serif text-[11px] sm:text-[16px] leading-snug sm:leading-relaxed mb-3 sm:mb-6">
-                Followed by a celebratory lunch and afternoon festivities in the Grand Ballroom.
+                Join us as we embark on our new journey and wave us goodbye.
               </p>
               <div className="inline-block px-3 sm:px-5 py-1.5 sm:py-2.5 bg-brand-primary/10 rounded-full border border-brand-primary/30 shadow-sm">
-                <span className="text-brand-primary font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[11px] uppercase block drop-shadow-sm">11:00 AM Onwards</span>
+                <span className="text-brand-primary font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[8px] sm:text-[11px] uppercase block drop-shadow-sm">04:15 PM</span>
               </div>
             </motion.div>
 

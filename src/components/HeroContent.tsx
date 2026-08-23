@@ -4,6 +4,10 @@ import { Sparkles, Heart } from 'lucide-react';
 import { CornerFlowers } from './CornerFlowers';
 
 export const HeroContent: React.FC = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get('guest');
+  const prefix = urlParams.get('prefix');
+
   return (
     <section className="relative min-h-screen py-24 sm:py-32 flex items-center justify-center overflow-hidden">
       <CornerFlowers position="all" opacity={0.8} scale={1.8} />
@@ -35,18 +39,25 @@ export const HeroContent: React.FC = () => {
 
           <div className="relative mb-12 w-full flex justify-center">
             <h1 className="relative text-6xl sm:text-8xl lg:text-9xl font-display text-stone-800 leading-tight drop-shadow-sm">
-              Thilini <br className="sm:hidden" />
+              Chamitha <br className="sm:hidden" />
               <span className="text-brand-primary-light italic font-light mx-4 sm:mx-8 text-5xl sm:text-7xl lg:text-8xl inline-block -translate-y-2 sm:-translate-y-4">&</span>
               <br className="sm:hidden" />
-              Nadun
+              Sameera
             </h1>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <div className="hidden sm:block h-[1px] w-24 bg-gradient-to-r from-transparent to-brand-primary/40" />
-            <p className="text-xl sm:text-3xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-2xl leading-relaxed">
-              Together with our families, we joyfully invite you to join us
-            </p>
+            <div className="flex flex-col items-center gap-4">
+              {guest && (
+                <span className="text-3xl sm:text-4xl font-display text-brand-primary mb-2 drop-shadow-sm">
+                  Dear {prefix ? `${prefix} ` : ''}{guest},
+                </span>
+              )}
+              <p className="text-xl sm:text-3xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-2xl leading-relaxed">
+                Together with our families, we joyfully invite you to join us
+              </p>
+            </div>
             <div className="hidden sm:block h-[1px] w-24 bg-gradient-to-l from-transparent to-brand-primary/40" />
           </div>
 
@@ -56,9 +67,20 @@ export const HeroContent: React.FC = () => {
             <div className="relative px-8 sm:px-16 py-4 sm:py-6 bg-white/70 backdrop-blur-lg border border-brand-primary/50 rounded-full shadow-[0_8px_30px_rgba(70,130,180,0.1)] flex items-center justify-center">
               <span className="relative text-2xl sm:text-4xl font-serif text-brand-primary tracking-[0.3em] font-medium drop-shadow-sm flex items-center gap-4">
                 <Sparkles className="w-4 h-4 text-brand-primary-light" />
-                20 . 08 . 2026
+                16 . 12 . 2026
                 <Sparkles className="w-4 h-4 text-brand-primary-light" />
               </span>
+            </div>
+          </div>
+
+          <div className="mt-16 sm:mt-24 w-full flex justify-center">
+            <div className="relative w-[300px] sm:w-[400px] lg:w-[500px] aspect-[4/3] rounded-[2rem] sm:rounded-[3rem] overflow-hidden border-[6px] sm:border-[8px] border-white/80 shadow-[0_20px_50px_rgba(70,130,180,0.15)] group">
+              <img 
+                src="/pre/couple-3.jpeg" 
+                alt="Couple" 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(70,130,180,0.1)] pointer-events-none" />
             </div>
           </div>
         </motion.div>
