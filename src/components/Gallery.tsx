@@ -2,15 +2,29 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ZoomIn } from 'lucide-react';
 
-const images = [
-  { id: 1, url: '/IMG_6940.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop', title: 'The Beginning' },
-  { id: 2, url: '/IMG_6941.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1522673607200-164d1f624698?q=80&w=800&auto=format&fit=crop', title: 'Our Journey' },
-  { id: 3, url: '/IMG_6942.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop', title: 'A Thousand Words' },
-  { id: 4, url: '/IMG_6943.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop', title: 'Endless Love' },
-  { id: 5, url: '/IMG_6944.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800&auto=format&fit=crop', title: 'Cherished Moments' },
-  { id: 6, url: '/IMG_6945.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop', title: 'Together Forever' },
-  { id: 7, url: '/IMG_6946.JPG.jpeg', fallback: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop', title: 'Forever & Always' },
+const files = [
+  'WhatsApp Image 2026-10-14 at 19.49.16.jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.16 (1).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.16 (2).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17.jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (1).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (2).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (3).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (4).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (5).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (6).jpeg',
+  'WhatsApp Image 2026-10-14 at 19.49.17 (7).jpeg',
 ];
+
+const titles = ['The Beginning', 'Our Journey', 'A Thousand Words', 'Endless Love', 'Cherished Moments', 'Together Forever'];
+
+const images = files.map((file, i) => ({
+  id: i + 1,
+  url: encodeURI(`/pre/${file}`),
+  title: titles[i % titles.length],
+}));
+
+export const GALLERY_IMAGE_URLS = images.map((img) => img.url);
 
 export const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -22,17 +36,15 @@ export const Gallery: React.FC = () => {
     <div className="w-full relative py-12 md:py-20 overflow-hidden">
       <style>
         {`
-          @keyframes slide-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+          @keyframes slide-right {
+            0% { transform: translate3d(-50%, 0, 0); }
+            100% { transform: translate3d(0, 0, 0); }
           }
           .animate-marquee {
             display: flex;
             width: max-content;
-            animation: slide-left 40s linear infinite;
-          }
-          .animate-marquee:hover {
-            animation-play-state: paused;
+            animation: slide-right ${images.length * 5}s linear infinite;
+            will-change: transform;
           }
         `}
       </style>
@@ -58,36 +70,33 @@ export const Gallery: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Infinite Auto-Scrolling Carousel */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, delay: 0.2 }}
-        className="w-full relative"
-      >
-        <div className="animate-marquee gap-6 sm:gap-10 px-6 sm:px-10 pb-16 pt-4 items-center cursor-ew-resize">
+      {/* Infinite Auto-Scrolling Carousel (left → right, never pauses) */}
+      <div className="w-full relative">
+        <div className="animate-marquee pb-16 pt-4 items-center">
           {marqueeImages.map((image, index) => (
-            <div
-              key={`${image.id}-${index}`}
-              className="relative flex-none w-[75vw] sm:w-[45vw] lg:w-[28vw] aspect-[3/4] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group cursor-pointer border-[8px] sm:border-[10px] border-white/90 bg-brand-rose transform transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_40px_60px_rgba(176,137,104,0.2)]"
-              onClick={() => setSelectedImage(image.url)}
-            >
-              <img
-                src={image.url}
-                onError={(e) => { e.currentTarget.src = image.fallback; }}
-                alt={image.title}
-                className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
-              />
-              {/* Elegant deep inner shadow for frame depth */}
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.15)] pointer-events-none" />
+            // Spacing lives on each item (not gap/padding) so -50% lands exactly on the duplicate set
+            <div key={`${image.id}-${index}`} className="flex-none pr-6 sm:pr-10">
+              <div
+                className="relative w-[75vw] sm:w-[45vw] lg:w-[28vw] aspect-[3/4] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.1)] group cursor-pointer border-[8px] sm:border-[10px] border-white/90 bg-brand-rose transform transition-all duration-700 hover:-translate-y-4 hover:shadow-[0_40px_60px_rgba(176,137,104,0.2)]"
+                onClick={() => setSelectedImage(image.url)}
+              >
+                <img
+                  src={image.url}
+                  loading="eager"
+                  decoding="async"
+                  alt={image.title}
+                  className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
+                />
+                {/* Elegant deep inner shadow for frame depth */}
+                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.15)] pointer-events-none" />
 
-              {/* Soft Cinematic Hover Overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end justify-center p-8 sm:p-10 pointer-events-none">
-                <div className="text-white text-center transform translate-y-6 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                  <ZoomIn className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 text-white/90 drop-shadow-md opacity-80" />
-                  <p className="font-serif text-3xl sm:text-4xl tracking-wide drop-shadow-lg font-light">{image.title}</p>
-                  <div className="w-16 h-[2px] bg-brand-plum/80 mx-auto mt-5 drop-shadow-md" />
+                {/* Soft Cinematic Hover Overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-end justify-center p-8 sm:p-10 pointer-events-none">
+                  <div className="text-white text-center transform translate-y-6 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+                    <ZoomIn className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 text-white/90 drop-shadow-md opacity-80" />
+                    <p className="font-serif text-3xl sm:text-4xl tracking-wide drop-shadow-lg font-light">{image.title}</p>
+                    <div className="w-16 h-[2px] bg-brand-plum/80 mx-auto mt-5 drop-shadow-md" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,7 +106,7 @@ export const Gallery: React.FC = () => {
         {/* Soft edge blur overlays to blend carousel into the page */}
         <div className="absolute top-0 left-0 w-16 sm:w-40 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
         <div className="absolute top-0 right-0 w-16 sm:w-40 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
-      </motion.div>
+      </div>
 
       {/* Fullscreen Premium Overlay */}
       <AnimatePresence>
@@ -121,10 +130,6 @@ export const Gallery: React.FC = () => {
               exit={{ scale: 0.8, opacity: 0, y: 40 }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               src={selectedImage}
-              onError={(e) => {
-                const fallbackImage = marqueeImages.find(img => img.url === selectedImage)?.fallback;
-                if (fallbackImage) e.currentTarget.src = fallbackImage;
-              }}
               alt="Gallery Preview"
               className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.6)] border-[6px] border-white/10"
               onClick={(e) => e.stopPropagation()}

@@ -122,7 +122,7 @@ export function VideoIntro({
             <div className="intro-content">
               <div className="mt-12 mb-auto text-white drop-shadow-md">
                 <p className="uppercase tracking-[0.4em] text-xs sm:text-sm font-bold mb-2 opacity-90">Wedding Invitation</p>
-                <h1 className="font-names text-5xl sm:text-6xl lg:text-7xl drop-shadow-lg tracking-wide">Shakya & Supun</h1>
+                <h1 className="font-names text-5xl sm:text-6xl lg:text-7xl drop-shadow-lg tracking-wide">Chamitha & Sameera</h1>
               </div>
               <button className="view-invitation-btn" onClick={handleEnter}>
                 View Invitation

@@ -6,6 +6,7 @@ import { VideoIntro } from './components/VideoIntro';
 import { InvitationContent } from './components/InvitationContent';
 import { Admin } from './components/Admin';
 import { INVITATION_IMAGE_URLS, preloadImages } from './utils/preloadImages';
+import { GALLERY_IMAGE_URLS } from './components/Gallery';
 
 const isAdminRoute = () => window.location.pathname === '/admin';
 
@@ -26,7 +27,7 @@ export default function App() {
 
   let eventLabel = 'Our Wedding Celebration';
 
-  const weddingDate = new Date('2026-10-29T09:00:00');
+  const weddingDate = new Date('2026-12-16T09:00:00');
 
   useEffect(() => {
     if (isAdminRoute()) return;
@@ -36,6 +37,8 @@ export default function App() {
     preloadImages([...INVITATION_IMAGE_URLS]).then(() => {
       if (!cancelled) setAssetsReady(true);
     });
+    // Warm the gallery photos in the background without delaying the intro
+    preloadImages(GALLERY_IMAGE_URLS);
 
     return () => {
       cancelled = true;

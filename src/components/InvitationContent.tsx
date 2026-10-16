@@ -3,6 +3,7 @@ import { Music, VolumeX, Heart } from 'lucide-react';
 import { Hero } from './Hero';
 import { FloatingPetals } from './FloatingPetals';
 import { CoupleDetails } from './CoupleDetails';
+import { Gallery } from './Gallery';
 
 import { CeremonyDetails } from './CeremonyDetails';
 import { Location } from './Location';
@@ -69,6 +70,12 @@ export function InvitationContent({
       <DeferredMount active={active} delay={120} minHeight="40vh">
         <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-blush via-white to-brand-blush relative overflow-hidden">
           <CoupleDetails />
+        </div>
+      </DeferredMount>
+
+      <DeferredMount active={active} delay={150} minHeight="40vh">
+        <div className="bg-white relative overflow-hidden">
+          <Gallery />
         </div>
       </DeferredMount>
 
@@ -139,10 +146,10 @@ export function InvitationContent({
         <footer className="py-12 bg-white border-t border-brand-lavender/20 text-center relative overflow-hidden mt-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-lavender/10 blur-[80px] rounded-full pointer-events-none" />
           <Heart className="w-6 h-6 mx-auto mb-6 text-brand-plum fill-brand-lavender/20" />
-          <p className="font-names text-4xl sm:text-5xl text-stone-800 mb-1">Shakya & Supun</p>
-          <p className="font-sinhala text-2xl sm:text-3xl text-stone-700 mb-4">ශාක්‍යා සහ සුපුන්</p>
+          <p className="font-names text-4xl sm:text-5xl text-stone-800 mb-1">Chamitha & Sameera</p>
+          <p className="font-sinhala text-2xl sm:text-3xl text-stone-700 mb-4">චමිතා සහ සමීර</p>
           <p className="text-[11px] sm:text-xs font-serif uppercase tracking-[0.3em] font-medium text-stone-500 mb-6 drop-shadow-sm">
-            October 29, 2026
+            December 16, 2026
           </p>
           <p className="text-stone-400 text-xs mt-4 font-sans tracking-wider">
             Want a beautiful wedding website like this? Create yours with <a target="_blank" rel="noreferrer" className="text-brand-plum font-bold hover:text-brand-rose transition-colors underline decoration-brand-plum/30 hover:decoration-brand-rose" href="https://wa.me/94707819074">invitemint</a>

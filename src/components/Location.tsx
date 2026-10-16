@@ -10,11 +10,11 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
   const venues = [
     {
       id: 'ceremony',
-      name: "The Epitome Hotel",
-      city: "Kurunegala, Sri Lanka",
+      name: "Hotel Kashyapa",
+      city: "Avissawella, Sri Lanka",
       quote: `"අපගේ ජීවිතයේ සුන්දරතම දිනය සැමරෙන ස්ථානය"`,
-      liveLocationUrl: "https://maps.app.goo.gl/H5gj3nYvdjNJU4y86",
-      imageUrl: "https://q-xx.bstatic.com/xdata/images/hotel/1200x630/479073392.jpg?k=0f268309279e9891f97c63561f9a78a566867cb6b6daa795053b29b6cdb3bd8c&o=",
+      liveLocationUrl: "https://www.google.com/maps/search/?api=1&query=Hotel+Kashyapa+Avissawella",
+      imageUrl: encodeURI("/Screenshot 2026-10-16 164656.png"),
       label: "The Venue"
     }
   ];

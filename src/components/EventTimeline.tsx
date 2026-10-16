@@ -3,24 +3,24 @@ import { Heart, MapPin, Utensils, Sparkles, Clock } from 'lucide-react';
 
 const events = [
   {
-    time: '8.00 AM',
-    title: 'Church Ceremony',
-    description: 'The Mass will commence at Our Lady of Sorrows Church, Kandawala.',
+    time: '9.30 AM',
+    title: 'Poruwa Ceremony',
+    description: 'The Poruwa Ceremony commences at 9.30 am at Hotel Kashyapa, Avissawella.',
     icon: Heart,
     color: 'from-rose-400 to-rose-500'
   },
   {
-    time: '10.00 AM',
-    title: 'Poruwa Ceremony & Wedding Function',
-    description: 'Poruwa Ceremony commences at 10.00 am, followed by the wedding function at The Epitome Hotel, Kurunegala.',
-    icon: MapPin,
+    time: '11.30 AM',
+    title: 'Registration',
+    description: 'Signing of the marriage registration, followed by the wedding celebration.',
+    icon: Sparkles,
     color: 'from-blue-500 to-blue-600'
   },
   {
-    time: 'July 24, 7.00 PM',
-    title: 'Homecoming Function',
-    description: 'Evening celebration and dinner at Jetwing Blue, Negombo.',
-    icon: Utensils,
+    time: '4.15 PM',
+    title: 'Going Away',
+    description: 'We bid farewell as the newlyweds leave to begin their journey together.',
+    icon: MapPin,
     color: 'from-amber-400 to-amber-500'
   },
 ];

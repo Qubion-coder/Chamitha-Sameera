@@ -21,9 +21,9 @@ export const CoupleDetails: React.FC = () => {
             <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent to-brand-plum/60" />
           </div>
           <h2 className="text-5xl sm:text-7xl font-names text-stone-800 tracking-tight drop-shadow-sm">
-            Shakya <span className="text-brand-plum font-light mx-2">&</span> Supun
+            Chamitha <span className="text-brand-plum font-light mx-2">&</span> Sameera
             <div className="text-3xl sm:text-5xl mt-4 font-sinhala text-stone-800 drop-shadow-sm">
-              ශාක්‍යා සහ සුපුන්
+              චමිතා සහ සමීර
             </div>
           </h2>
         </motion.div>
@@ -40,15 +40,15 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-end">
             <span className="text-brand-plum uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Groom</span>
-            <h3 className="text-4xl sm:text-5xl font-names text-stone-800 mb-1 drop-shadow-sm">Supun</h3>
-            <h4 className="text-2xl sm:text-3xl font-sinhala text-stone-700 mb-3 drop-shadow-sm">සුපුන් සංජීව</h4>
+            <h3 className="text-4xl sm:text-5xl font-names text-stone-800 mb-1 drop-shadow-sm">Sameera</h3>
+            <h4 className="text-2xl sm:text-3xl font-sinhala text-stone-700 mb-3 drop-shadow-sm">සමීර චතුරංග</h4>
             <p className="text-stone-500/90 font-sans text-xs sm:text-sm text-center lg:text-right">
-              Aththidiya Vidanalage Don Thilak Rohitha Kumara &<br/>
-              Jasinliyanage Dona Achala Kamini Wijegunasekara
+              A M Sumanaweera &<br/>
+              U G Rathnawathie
             </p>
             <p className="text-stone-500/90 font-sinhala text-sm sm:text-base mt-2 text-center lg:text-right">
-              අත්තිඩිය විදානලාගේ දොන් තිලක් රෝහිත කුමාර සහ<br/>
-              ජාසින්ලියනගේ දෝන අචලා කාමිනී විජේගුණසේකරගේ<br/>
+              ඒ. එම්. සුමනවීර සහ<br/>
+              යූ. ජී. රත්නාවතීගේ<br/>
               ආදරණීය පුත්,
             </p>
           </div>
@@ -70,15 +70,15 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-start">
             <span className="text-brand-plum uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Bride</span>
-            <h3 className="text-4xl sm:text-5xl font-names text-stone-800 mb-1 drop-shadow-sm">Shakya</h3>
-            <h4 className="text-2xl sm:text-3xl font-sinhala text-stone-700 mb-3 drop-shadow-sm">නෙත්මි ශාක්‍යා හේරත්</h4>
+            <h3 className="text-4xl sm:text-5xl font-names text-stone-800 mb-1 drop-shadow-sm">Chamitha</h3>
+            <h4 className="text-2xl sm:text-3xl font-sinhala text-stone-700 mb-3 drop-shadow-sm">චමිතා උදේශි</h4>
             <p className="text-stone-500/90 font-sans text-xs sm:text-sm text-center lg:text-left">
-              Herath Bandara Mudiyanselage Chaminda Pushpakumara Herath &<br/>
-              Dompege Shalika Madushini Siriwardana
+              Don Soomasiri Thalallage &<br/>
+              M J M D Padmini Jayawardhana
             </p>
             <p className="text-stone-500/90 font-sinhala text-sm sm:text-base mt-2 text-center lg:text-left">
-              හේරත් බංඩාර මුදියන්සේලාගේ චමින්ද පුෂ්පකුමාර හේරත් සහ<br/>
-              දොම්පේගේ ශාලිකා මදුෂිණි සිරිවර්ධනගේ<br/>
+              දොන් සෝමසිරි තලල්ලගේ සහ<br/>
+              එම්. ජේ. එම්. ඩී. පද්මිනී ජයවර්ධනගේ<br/>
               ආදරණීය දියණිය,
             </p>
           </div>
