@@ -2,19 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ZoomIn } from 'lucide-react';
 
-const files = [
-  'WhatsApp Image 2026-10-14 at 19.49.16.jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.16 (1).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.16 (2).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17.jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (1).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (2).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (3).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (4).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (5).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (6).jpeg',
-  'WhatsApp Image 2026-10-14 at 19.49.17 (7).jpeg',
-];
+// Shown in this order; files live in public/pre as <number>.jpeg
+const files = [1, 2, 3, 4, 6, 7, 8, 9, 10].map((n) => `${n}.jpeg`);
 
 const titles = ['The Beginning', 'Our Journey', 'A Thousand Words', 'Endless Love', 'Cherished Moments', 'Together Forever'];
 
